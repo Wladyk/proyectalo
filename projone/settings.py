@@ -25,22 +25,31 @@ SECRET_KEY = 'django-insecure-oofzy9r392r%hm!6bd4@r436&c-q1&x0@mie92(ll(gxil8&ew
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:19006',
+)
 
 INSTALLED_APPS = [
     'proyectalo',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'projone.urls'
@@ -77,7 +87,7 @@ WSGI_APPLICATION = 'projone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'proyectalo',
+        'NAME': 'projectalo',
         'USER': 'postgres',
         'PASSWORD': 'vordank',
         'HOST': '127.0.0.1',
@@ -88,6 +98,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = 'proyectalo.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -128,3 +139,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}

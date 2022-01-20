@@ -9,8 +9,13 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.response import Response
-class SeekerViewset(viewsets.ModelViewSet):
+class IdeologistViewset(viewsets.ModelViewSet):
     #permission_classes = [IsAuthenticated]
     #authentication_classes = (TokenAuthentication,)
-    serializer_class = serializers.SeekerSerializer
-    queryset = Seeker.objects.all()
+    serializer_class = serializers.IdeologistSerializer
+    queryset = Ideologist.objects.all()
+class BuilderViewset(viewsets.ModelViewSet):
+    #permission_classes = [IsAuthenticated]
+    #authentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.BuilderSerializer
+    queryset = Builder.objects.all()

@@ -19,3 +19,16 @@ class BuilderViewset(viewsets.ModelViewSet):
     #authentication_classes = (TokenAuthentication,)
     serializer_class = serializers.BuilderSerializer
     queryset = Builder.objects.all()
+class TechnologyViewset(viewsets.ModelViewSet):
+    serializer_class = serializers.TechnologySerializer
+    queryset = Builder.objects.all()
+class ProjectViewset(viewsets.ModelViewSet):
+    serializer_class = serializers.ProjectSerializer
+    queryset = Project.objects.all()
+class MatchViewset(viewsets.ModelViewSet):
+    serializer_class = serializers.MatchSerializer
+    queryset = Match.objects.all()
+class InterestProjectBuilder(viewsets.ModelViewSet):
+    serializer_class = serializers.InterestProjectBuilderSerializer
+    queryset = InterestProjectBuilder.objects.all()
+    

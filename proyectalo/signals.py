@@ -6,7 +6,7 @@ from django.dispatch import receiver
 @receiver(post_save, sender=User)
 def makeJob(sender, instance, created, **kwargs):
     if created:
-        if instance.ideologistFlag == True:
+        if instance.job_type == 1:
             Ideologist.objects.create(user=instance)
-        if instance.builderFlag == True:
+        if instance.job_type == 2:
             Builder.objects.create(user=instance)

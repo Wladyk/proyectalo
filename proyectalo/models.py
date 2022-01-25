@@ -2,14 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 #Inherits from Abstract elemental class
 class User(AbstractUser):
-    ideologistFlag = models.BooleanField(default=False)
-    builderFlag = models.BooleanField(default=False)
+    class JobType(models.IntegerChoices):
+        Ideologist = 1,
+        Builder = 2
+    job_type = models.IntegerField(choices=JobType.choices)
     profilePicture = models.ImageField(default="")
-    REQUIRED_FIELDS = ['ideologistFlag','builderFlag','first_name','last_name','email']
+    REQUIRED_FIELDS = ['job_type','first_name','last_name','email']
 class Technology(models.Model):
     name = models.CharField(max_length=200)
     class Meta:
-        verbose_name = "Technologie" #Just for the sake of the plural written form on the admin panel
+        verbose_name = "Technologie" #Just for the sake of the plural written form on the admin panel 
 
 class Ideologist(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

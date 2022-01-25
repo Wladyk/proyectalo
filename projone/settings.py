@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'projone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'proyectaloB',
+        'NAME': 'proyectalo',
         'USER': '',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
